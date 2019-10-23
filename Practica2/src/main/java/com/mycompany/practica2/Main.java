@@ -20,13 +20,16 @@ import java.io.*;
 
 public class Main {    
     public static void main (String[] args) throws FileNotFoundException, UnsupportedEncodingException, IOException{
-        String nombre, opcion, descripcion, matricula, precio, oldSocio, newSocio, motoCes;
+        String nombre, opcion, descripcion, matricula, precio, oldSocio, newSocio, motoCes, precioMax;
         Scanner sc = new Scanner(System.in);
         ArrayList<Socio> sociosdisponibles = new ArrayList<Socio>();
         ArrayList<Socio> lista_socios = new ArrayList<Socio>();
         ArrayList<Moto> lista_motos = new ArrayList<Moto>();
         ArrayList<Cesion> lista_cesiones = new ArrayList<Cesion>();
         BufferedWriter writer;
+        
+        System.out.println("Introduce el precio máximo que quiera: ");
+        precioMax = sc.nextLine();
         
         do{
             System.out.println("Asociacion cultural de amigos de las motos antiguas.");
@@ -85,7 +88,7 @@ public class Main {
                     
                     
                     for (int k = 0; k < lista_socios.size(); k++){
-                        if(lista_socios.get(k).ImporteMotos() + Integer.parseInt(precio) < 6000){
+                        if(lista_socios.get(k).ImporteMotos() + Integer.parseInt(precio) < Integer.parseInt(precioMax)){
                             System.out.println("-------------------------------------");
                             System.out.println(lista_socios.get(k).getNumSocio()+ " " + lista_socios.get(k).getNombreSocio());
                             sociosdisponibles.add(lista_socios.get(k));
